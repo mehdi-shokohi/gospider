@@ -3,16 +3,13 @@ package core
 import (
 	"fmt"
 	"net/url"
-	"sync"
-
-	jsoniter "github.com/json-iterator/go"
 
 	"github.com/gocolly/colly/v2"
+	jsoniter "github.com/json-iterator/go"
 	sitemap "github.com/oxffaa/gopher-parse-sitemap"
 )
 
-func ParseSiteMap(site *url.URL, crawler *Crawler, c *colly.Collector, wg *sync.WaitGroup) {
-	defer wg.Done()
+func ParseSiteMap(site *url.URL, crawler *Crawler, c *colly.Collector) {
 	sitemapUrls := []string{"/sitemap.xml", "/sitemap_news.xml", "/sitemap_index.xml", "/sitemap-index.xml", "/sitemapindex.xml",
 		"/sitemap-news.xml", "/post-sitemap.xml", "/page-sitemap.xml", "/portfolio-sitemap.xml", "/home_slider-sitemap.xml", "/category-sitemap.xml",
 		"/author-sitemap.xml"}

@@ -7,15 +7,12 @@ import (
 	"net/url"
 	"regexp"
 	"strings"
-	"sync"
-
-	jsoniter "github.com/json-iterator/go"
 
 	"github.com/gocolly/colly/v2"
+	jsoniter "github.com/json-iterator/go"
 )
 
-func ParseRobots(site *url.URL, crawler *Crawler, c *colly.Collector, wg *sync.WaitGroup) {
-	defer wg.Done()
+func ParseRobots(site *url.URL, crawler *Crawler, c *colly.Collector) {
 	robotsURL := site.String() + "/robots.txt"
 
 	resp, err := http.Get(robotsURL)
